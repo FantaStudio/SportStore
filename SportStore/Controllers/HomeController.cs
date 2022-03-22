@@ -27,8 +27,8 @@ namespace SportStore.Controllers
                 .Where(p => (category == null 
                             || p.Category == category)
                             && (q == null
-                            || p.Name.ToLower()
-                            .Contains(q.ToLower())));
+                            || p.Name.Trim().ToLower()
+                            .Contains(q.Trim().ToLower())));
 
             var productListViewModel = new ProductsListViewModel()
             {
