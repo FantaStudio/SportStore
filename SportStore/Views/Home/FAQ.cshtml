@@ -1,0 +1,35 @@
+﻿@model Dictionary<string, string>;
+@{
+    foreach (var questionAnswer in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between collapsible">
+                <p>@questionAnswer.Key</p>
+                <i class="fa fa-angle-down"></i>
+            </div>
+            <div class="card-body collapse-content">
+                @{
+                    var strings = questionAnswer.Value.Split("\n");
+                    @foreach(var answerString in strings)
+                    {
+                        <p>@answerString</p>
+                    }
+                }
+            </div>
+        </div>
+    }
+}
+<script>
+    var collapsibles = document.getElementsByClassName("collapsible");
+
+    for (let i = 0; i < collapsibles.length; i++) {
+        collapsibles[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            let icon = this.querySelector('i');
+            icon.classList.toggle("fa-angle-down");
+            icon.classList.toggle("fa-angle-up");
+            var content = this.nextElementSibling;
+            content.classList.toggle("collapsed");
+        });
+    }
+</script>

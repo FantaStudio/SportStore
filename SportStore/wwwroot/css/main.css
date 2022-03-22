@@ -1,0 +1,218 @@
+﻿a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+*, 
+:after, 
+:before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.content-wrapper, 
+.wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    -webkit-box-flex: 1;
+    flex: 1 0 auto;
+}
+
+/*@media (max-width: 767px) {*/
+    /* xs */
+    /*.btn {
+        padding: 4px 5px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {*/
+    /* sm */
+    /*.btn {
+        padding: 5px 10px;
+        font-size: 13px;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {*/
+    /* md */
+    /*.btn {
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        border-radius: 4px;
+    }
+}
+
+@media (min-width: 1200px) {*/
+    /* lg */
+    /*.btn {
+        padding: 6px 12px;
+        font-size: 15px;
+        line-height: 1.3333333;
+        border-radius: 5px;
+    }
+}*/
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif!important;
+    font-weight: 400;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+    min-height: 70vh;
+}
+
+.container-lg {
+    width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.logo {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.4em;
+    text-decoration: none;
+    padding: 0;
+}
+
+.logo:hover {
+    text-decoration: none;
+}
+
+.search-query_input {
+    border: 1px solid var(--primary);
+}
+
+.search-query_btn {
+    height: 35px;
+    border: 1px solid var(--primary);
+    border-radius: 0 5px 5px 0;
+    background-color: #007bff;
+    color: white;
+}
+
+.cart-btn_counter {
+    margin-left: 5px;
+    font-weight: 500;
+}
+
+.menu {
+    background-color: var(--primary);
+    position: relative;
+}
+
+
+.menu-catalog {
+    position: absolute;
+    overflow: hidden;
+    z-index: 5000;
+    display: none;
+    top:100%;
+    animation: ease-in;
+}
+
+@media (max-width: 576px) {
+    /* xs */
+    .menu-catalog {
+        left:0;
+        width:100%;
+        top: 40%;
+    }
+}
+
+.menu-catalog.active {
+    display: block;
+}
+
+
+.menu-catalog_wrapper {
+    background: var(--primary);
+    border-radius: 0px 0 5px 5px;
+}
+
+.menu-catalog_btn {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-item:not(:last-child) {
+        margin-right: 10px;
+    }
+}
+
+.menu-item_link {
+    color: white;
+}
+
+.menu-item_link:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.collapsible {
+    cursor: pointer;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.collapse-content {
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 18px;
+    transition: max-height 0.2s ease-out;
+}
+
+.collapse-content.collapsed {
+    padding: 5px 18px;
+    max-height: max-content;
+}
+
+.social-icon:hover {
+    color: var(--primary);
+}
+
+.short-description {
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.product-img {
+    object-fit: contain;
+    height: 225px;
+    background: #f4f4f4;
+}
+
+.product-img.preview{
+    height: 128px;
+}
+
+.bg-gray {
+    background-color: #f5f5f7;
+}

@@ -1,0 +1,44 @@
+﻿@model Order
+<h4 class="h4">Оформление заказа</h4>
+<p>Пожалуйста, введите корректную информацию о себе, чтобы заказ точно попал к вам в руки!</p>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form class="mt-3" asp-action="Checkout" method="post">
+    <h5 class="h5">Кому доставляем?</h5>
+    <div class="form-group">
+        <label>Имя*</label><input asp-for="Name" class="form-control" />
+    </div>
+    <h5 class="h5">Ваш адрес</h5>
+    <div class="form-group">
+        <label>Улица*</label><input asp-for="Line1" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Дом</label><input asp-for="Line2" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Квартира</label><input asp-for="Line3" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Почтовый индекс</label><input asp-for="Zip" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Город*</label><input asp-for="City" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Область*</label><input asp-for="CityArea" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Страна*</label><input asp-for="Country" class="form-control" />
+    </div>
+    <h5 class="h5">Дополнительно</h5>
+    <div class="checkbox">
+        <label>
+            <input asp-for="GiftWrap" /> Завернуть в подарочную упаковку
+        </label>
+    </div>
+    <p class="mt-2">* - Поля, обязательные к заполнению</p>
+    <div class="text-center">
+        <input type="submit" class="btn btn-primary mb-2" value="Подтвердить заказ" />
+    </div>
+</form>

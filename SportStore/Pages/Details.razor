@@ -1,0 +1,30 @@
+﻿@page "/admin/products/details/{id:long}"
+
+<h3 class="bg-info text-white text-center p-1">Просмотр</h3>
+<table class="table table-sm table-bordered table-striped">
+    <tr><th>ID</th><td>@Product.ProductID</td></tr>
+    <tr><th>Название</th><td>@Product.Name</td></tr>
+    <tr><th>Описание</th><td>@Product.Description</td></tr>
+    <tr><th>Цена</th><td>@Product.Price</td></tr>
+    <tr><th>Категория</th><td>@Product.Category</td></tr>
+</table>
+<NavLink class="btn btn-warning" href="@EditUrl">Редактировать</NavLink>
+<NavLink class="btn btn-secondary" href="/admin/products">Назад</NavLink>
+
+@code {
+    [Inject]
+    private IStoreRepository repository { get; set; }
+
+    [Parameter]
+    public long Id { get; set; }
+
+    private Product Product { get; set; }
+
+
+    protected override void OnParametersSet()
+    {
+        Product = repository.Products.FirstOrDefault(p => p.ProductID == Id);
+    }
+
+    public string EditUrl => $"/admin/products/edit/{Product.ProductID}";
+}

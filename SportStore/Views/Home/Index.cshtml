@@ -1,0 +1,25 @@
+﻿@model ProductsListViewModel
+
+@if (Model.Products.Count() < 1)
+{
+    <h4>Товары отсутствуют</h4>
+    return;
+}
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+    @foreach (var product in Model.Products)
+    {
+        <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-3">
+            <partial name="ProductSummary" model="product" />
+        </div>
+    }
+</div>
+
+@if (Model.PagingInfo.TotalPages > 1)
+{
+    <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+         page-class="btn"
+         page-class-normal="btn-outline-dark"
+         page-class-selected="btn-primary" class="btn-group pull-right m-1" page-url-category="@Model.CurrentCategory">
+    </div>
+}

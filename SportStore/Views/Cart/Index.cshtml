@@ -1,0 +1,80 @@
+﻿@model CartModel
+
+<div class="row">
+    <div class="col-12 col-md-8">
+        <div class="d-flex justify-content-between pt-2">
+            <h4 class="h4 mb-3">Ваша корзина</h4>
+            <h4 class="h4 mb-3">@Model.Cart.Lines.Count() товар(ов)</h4>
+        </div>
+        @if (Model.Cart.Lines.Count() > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Товар</th>
+                        <th class="text-right">Цена</th>
+                        <th class="text-right">Итог</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var line in Model.Cart.Lines)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-block d-lg-flex">
+                                    <div class="mr-3">
+                                        <img class="product-img preview" src="~/img/products/@line.Product.ImageFilePath/title.jpg" />
+                                    </div>
+                                    <div class="mt-2">
+                                        <span>@line.Product.Name @line.Quantity шт.</span>
+                                        <div class="h-100">
+                                            <form asp-action="Delete" method="post">
+                                                <input type="hidden" name="ProductID" value="@line.Product.ProductID" />
+                                                <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                                                <button type="submit" class="btn btn-sm btn-danger mt-2 align-bottom">Удалить</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-right">@line.Product.Price.ToString("c")</td>
+                            <td class="text-right">@((line.Quantity * line.Product.Price).ToString("c"))</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <hr />
+            <h4>Тут ничего нет :(</h4>
+        }
+    </div>
+
+    <div class="col">
+        <div class="bg-gray pl-2 pr-2 ml-n2 mr-n2">
+            <div class="mt-3 mt-md-0">
+                <h4 class="h4 mb-3 pt-2">Заказ</h4>
+
+                <div class="d-lg-flex d-sm-block mb-lg-0 mb-sm-2 justify-content-between">
+                    <p>Сумма скидки</p>
+                    <p>@Model.Cart.ComputeTotalDiscount().ToString("c")</p>
+                </div>
+
+                <div class="d-lg-flex d-sm-block mb-lg-0 mb-sm-2 justify-content-between">
+                    <p>Итоговая стоимость</p>
+                    <p>@Model.Cart.ComputeTotalValue().ToString("c")</p>
+                </div>
+
+
+                <div class="mt-3">
+                    <a href="@Model.ReturnUrl" class="btn btn-primary d-block d-xl-inline mb-2 mb-xl-0">Продолжить покупки</a>
+                    <a asp-action="Checkout" asp-controller="Order" class="btn btn-primary d-block d-xl-inline">Оформить заказ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

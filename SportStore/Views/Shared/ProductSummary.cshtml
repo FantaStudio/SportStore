@@ -1,0 +1,43 @@
+﻿@model Product
+
+<div class="card shadow-sm h-100">
+    @{
+        if (string.IsNullOrEmpty(Model.ImageFilePath))
+        {
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                 preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Нет картинки</text>
+            </svg>
+        }
+        else
+        {
+            <img src="~/img/products/@Model.ImageFilePath/title.jpg" class="card-img-top product-img"/>
+            <div class="card-body">
+                <h4 class="card-title font-weight-bold">@Model.Name</h4>
+                <span class="card-text short-description">@Model.Description</span>
+            </div>
+            <div class="card-footer">
+                <div class="mb-2">
+                    @{
+                        <span class="font-weight-bold">@Model.GetPriceWithDiscount().ToString("c")</span>
+                        if (Model.Discount > 0)
+                        {
+                            <small class="text-muted"><s>@Model.Price.ToString("c")</s></small>
+                        }
+                    }
+                </div>
+                <form id="@Model.ProductID" asp-controller="Cart" asp-action="Index" method="post">
+                    <input type="hidden" asp-for="ProductID" />
+                    <input type="hidden" name="returnUrl"
+                           value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                    <button type="submit" class="btn btn-success btn-sm pull-right mb-2 mr-1">
+                        В корзину
+                    </button>
+                </form>
+            </div>
+        }
+    }
+</div>

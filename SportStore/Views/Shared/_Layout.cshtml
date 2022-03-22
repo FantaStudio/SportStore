@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sportik - Спортивный магазин</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="/lib//font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="~/img/logo.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="wrapper">
+        <partial name="Header" />
+        <main>
+            <div class="container">
+                <div class="py-5">
+                    @RenderBody()
+                </div>
+            </div>  
+        </main>
+        <partial name="Footer" />
+    </div>
+
+    <script type="text/javascript">
+        function toggleCatalogMenu(event) {
+            var menu = document.getElementById("menu-catalog");
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+            } else {
+                menu.classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>
