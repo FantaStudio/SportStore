@@ -3,9 +3,7 @@
         <div class="container">
             <div class="row flex-nowrap align-items-center justify-content-between m-0">
                 <div class="col-4 d-lg-none d-flex">
-                    <div class="col-6 d-flex search-mobile p-0 js-search-btn" data-set="mobile">
-                        <a href="/search/index.php"><i class="fa fa-search"></i></a>
-                    </div>
+                    <i class="fa fa-search search-mobile_button" onclick="toggleElement('search-mobile')"></i>
                 </div>
 
                 <a class="col-4 d-none d-lg-flex logo" href="/">
@@ -37,7 +35,7 @@
         <div class="container">
             <div class="row d-block d-sm-flex justify-content-sm-between align-items-center pb-3 pt-3 pl-3">
                 <div class="menu-item">
-                    <btn class="menu-catalog_btn btn btn-danger d-block d-sm-inline mb-2 mb-sm-0" onclick="toggleCatalogMenu()">
+                    <btn class="menu-catalog_btn btn btn-danger d-block d-sm-inline mb-2 mb-sm-0" onclick="toggleElement('menu-catalog')">
                         Каталог
                     </btn>
                 </div>
@@ -60,6 +58,16 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="search-mobile @(Context.Request.Query.ContainsKey("q") ? "active" : String.Empty)" id="search-mobile">
+        <div class="container">
+            <form asp-controller="Home" asp-action="Index" method="get">
+                <div class="search_wrapper d-flex d-lg-none pt-3">
+                    <input class="search-query_input w-75 pl-3" type="text" name="q" placeholder="Поиск по товарам" value='@Context.Request.Query["q"]' />
+                    <input class="search-query_btn w-25" type="submit" value="Поиск" />
+                </div>
+            </form>
         </div>
     </div>
 </header>

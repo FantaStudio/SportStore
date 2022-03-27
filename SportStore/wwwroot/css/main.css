@@ -1,4 +1,7 @@
-﻿a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+﻿
+/*=================== MAIN ===============================================*/
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
     margin: 0;
     padding: 0;
     font-size: 100%;
@@ -88,6 +91,33 @@ main {
     margin-right: 15px;
 }
 
+.bg-gray {
+    background-color: #f5f5f7;
+}
+
+/* Expander */
+.collapsible {
+    cursor: pointer;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.collapse-content {
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 18px;
+    transition: max-height 0.2s ease-out;
+}
+
+.collapse-content.collapsed {
+    padding: 5px 18px;
+    max-height: max-content;
+}
+
+/*=================== Header ===============================================*/
+
 .logo {
     font-family: 'Fredoka', sans-serif;
     font-size: 1.4em;
@@ -111,11 +141,25 @@ main {
     color: white;
 }
 
+.search-mobile_button {
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.search-mobile {
+    display: none;
+}
+
+.search-mobile.active {
+    display: block;
+}
+
 .cart-btn_counter {
     margin-left: 5px;
     font-weight: 500;
 }
 
+/* Menu */
 .menu {
     background-color: var(--primary);
     position: relative;
@@ -136,7 +180,7 @@ main {
     .menu-catalog {
         left:0;
         width:100%;
-        top: 40%;
+        top: auto;
     }
 }
 
@@ -169,30 +213,14 @@ main {
     text-decoration: none;
 }
 
-.collapsible {
-    cursor: pointer;
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-}
-
-.collapse-content {
-    overflow: hidden;
-    max-height: 0;
-    padding: 0 18px;
-    transition: max-height 0.2s ease-out;
-}
-
-.collapse-content.collapsed {
-    padding: 5px 18px;
-    max-height: max-content;
-}
-
+/*=================== Footer ===============================================*/
 .social-icon:hover {
     color: var(--primary);
 }
 
+/*=================== Product ===============================================*/
+
+/* Product card */
 .short-description {
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;
@@ -211,8 +239,4 @@ main {
 
 .product-img.preview{
     height: 128px;
-}
-
-.bg-gray {
-    background-color: #f5f5f7;
 }
